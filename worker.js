@@ -192,7 +192,7 @@ var ASM = (function() {
          *   @param {uint32} x0
          *   @param {uint32} x1
          *   @param {uint32} x2
-         *   @return {uuint32} result
+         *   @return {uint32} result
          */
         hashcash_md5: Ia
     };

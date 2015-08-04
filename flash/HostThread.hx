@@ -1,6 +1,5 @@
 import flash.external.ExternalInterface;
 import flash.system.Security;
-import flash.Vector;
 import flash.Lib;
 
 
