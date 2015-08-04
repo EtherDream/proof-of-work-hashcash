@@ -1,6 +1,6 @@
 ## Proof-of-Work Hashcash 测试
 
-[测试页面](http://http://121.43.101.95/login.php)
+测试页面：[http://121.43.101.95/login.php](http://121.43.101.95/login.php)
 
 每次访问登录页时，会生成一个随机字符串 `pow_ques`。
 
