@@ -1,5 +1,4 @@
 -swf ../pow.swf
 -swf-version 11.4
--swf-header 500:20:60:FFFFFF
 -dce full
 -main Main
