@@ -69,13 +69,13 @@ if (!isset($_POST['user']) || !isset($_POST['pwd'])) {
 
 	Pow.onReady = function() {
 		var ques = $('#pow_ques').val();
-		console.log('resolving: %s', ques);
+		console.log('resolving: ' + ques);
 
 		var tick = +new Date();
 
 		Pow.onResolved = function(ques, answ) {
 			var elapse = new Date() - tick;
-			console.log('resolved: %s take: %sms', answ, elapse);
+			console.log('resolved: ' + answ + ' take: ' + elapse + 'ms');
 
 			$('#pow_answ').val(answ);
 
@@ -86,6 +86,11 @@ if (!isset($_POST['user']) || !isset($_POST['pwd'])) {
 		Pow.resolve(ques);
 	};
 	Pow.thread = 4;
+
+
+	// low IE
+	if (!window.console)
+		window.console = {log: alert};
 	</script>
 </body>
 </html>
