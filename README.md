@@ -12,9 +12,11 @@ left(md5(pow_ques + pow_answ), 6) == '000000'
 
 因为散列的结果不可预测，只能通过暴力求解。
 
-为了提高性能，本例使用 asm.js + WebWorker，可达到 Native 的 70% 左右。
+为了提高性能，本例使用 asm.js，可达到 Native 的 70% 左右。
 
-对于不支持 HTML5 的浏览器，使用 Flash 多线程计算，效率比 asm.js 略低。
+对于不支持 HTML5 的浏览器，使用 Flash 计算，效率比 asm.js 略低。
+
+为了不阻塞用户体验，使用 WebWorker 多线程计算。对于 Flash 插件，版本必须高于 11.4。
 
 
 ## 缺陷
