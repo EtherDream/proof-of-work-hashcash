@@ -1,5 +1,5 @@
 (function() {
-    var SUPPORT_HTML5 = !!window.Worker;
+    var USE_HTML5_WORKER = !!window.Worker && !/Trident/i.test(navigator.userAgent);
 
 
     var Pow = window.Pow = {
@@ -23,7 +23,7 @@
     Pow.resolve = function(ques) {
         Pow.state = Pow.STAT_RESOLVING;
 
-        if (SUPPORT_HTML5) {
+        if (USE_HTML5_WORKER) {
             worker_start(ques);
         } else {
             fla.Start(Pow.thread, ques);
@@ -55,7 +55,7 @@
         var id = '__fla' + ~~(1e6 * Math.random());
 
         if (SUPPORT_ACTIVEX) {
-            html = '<object id="' + id + '" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param name="movie" value="' + url + '"><param name="allowScriptAccess" value="always"></object>';
+            html = '<object id="' + id + '" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" type="application/x-shockwave-flash"><param name="movie" value="' + url + '"><param name="allowScriptAccess" value="always"></object>';
         } else {
             html = '<embed id="' + id + '" src="' + url + '" allowScriptAccess="always"></embed>';
         }
@@ -112,7 +112,7 @@
     }
 
     function init() {
-        if (SUPPORT_HTML5) {
+        if (USE_HTML5_WORKER) {
             initHtml5();
         } else {
             initFlash();
