@@ -22,9 +22,6 @@ if (!isset($_POST['pwd'])) {
 <!doctype html>
 <html>
 <head>
-	<!--
-		https://github.com/EtherDream/proof-of-work-hashcash
-	-->
 	<meta charset="utf-8" />
 	<title>hashcash test</title>
 	<script src="//lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
@@ -36,10 +33,11 @@ if (!isset($_POST['pwd'])) {
 <body>
 	<form id="form_login" action="login.php" method="POST">
 		<h1>登录测试</h1>
-		<div>
-			口令: <input name="pwd" autofocus type="text" value="" />
-			<button id="btnLogin" type="submit">登录</button>
-		</div>
+		<!--
+			查看：https://github.com/EtherDream/proof-of-work-hashcash
+		-->
+		口令: <input name="pwd" autofocus type="text" value="" />
+		<button id="btnLogin" type="submit">登录</button>
 
 		<!--
 			请提供 pow_answ，符合：
@@ -47,7 +45,7 @@ if (!isset($_POST['pwd'])) {
 		-->
 		<input id="pow_ques" name="pow_ques" type="hidden" value="<?php echo $ques?>" />
 		<input id="pow_answ" name="pow_answ" type="hidden" />
-		
+
 		<img id="imgWait" style="display:none" src="loading.gif" />
 	</form>
 	<p><a href="win.txt" target="_blank">成功登录的用户</a></p>
@@ -57,6 +55,8 @@ if (!isset($_POST['pwd'])) {
 	var waiting;
 
 	$('#form_login').submit(function(e) {
+
+		// 提交时，答案还在解答中。等待解答完成。
 		if (Pow.state == Pow.STAT_RESOLVING) {
 			waiting = true;
 			$('#imgWait').show();
@@ -87,7 +87,7 @@ if (!isset($_POST['pwd'])) {
 	};
 
 	// 默认线程数
-	Pow.thread = 2;
+	Pow.thread = 4;
 	</script>
 </body>
 </html>
