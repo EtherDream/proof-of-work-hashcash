@@ -1,4 +1,9 @@
 (function() {
+    //
+    // 兼容性测试
+    // IE 以外的浏览器，使用 HTML5 Worker
+    // 其余使用 Flash
+    //
     var USE_HTML5_WORKER = !!window.Worker && !/Trident/i.test(navigator.userAgent);
 
 
@@ -30,9 +35,8 @@
         }
     };
 
-    //
+
     // Flash
-    //
     var SUPPORT_ACTIVEX = 'ActiveXObject' in window;
 
     function getFlashVer() {
@@ -118,7 +122,6 @@
             initFlash();
         }
     }
-
     init();
 
     //
@@ -174,9 +177,7 @@
         }
     }
 
-    //
     // 任务分配
-    //
     var prog;
 
     function task_init() {
